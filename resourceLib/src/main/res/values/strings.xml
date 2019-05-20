@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="app_name">LanguageApp</string>
+
+    <string name="login_validation_error">Login should contain 8–15 symbols</string>
+    <string name="password_validation_error">Password should contain 8–15 symbols</string>
+    <string name="password_mismatch_error">Passwords should be identical</string>
+    <string name="email_validation_error">Please enter a valid email</string>
+    <string name="login_hint">Login</string>
+    <string name="login_sign_up">Sign up</string>
+    <string name="password_hint">Password</string>
+    <string name="password_hint_confirm">Password confirmation</string>
+    <string name="email_hint">Email</string>
+    
+    <!-- Study screen -->
+    <string name="grades_hint">Grades</string>
+    <string name="homework_hint">Assignments</string>
+    <string name="news_hint">Announcements</string>
+    
+    <!-- Notifications -->
+    <string name="notification_timestamp_format">\u2022 %s</string>
+    <string name="contact_information">Contact information:</string>
+
+    <!-- Grades -->
+    <string name="grades_header_name">Subject name</string>
+    <string name="grades_header_grade">Grade</string>
+    <string name="grades_header_notices">Notices</string>
+
+</resources>

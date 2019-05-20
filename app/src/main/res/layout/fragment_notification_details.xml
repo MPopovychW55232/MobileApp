@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+	
+	<data>
+		<variable
+				name="model"
+				type="com.makki.languageapp.fragments.main.messages.NotificationDetailsViewModel"/>
+	</data>
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			xmlns:app="http://schemas.android.com/apk/res-auto"
+			xmlns:tools="http://schemas.android.com/tools"
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+		
+		<androidx.appcompat.widget.AppCompatImageView
+				android:id="@+id/sender_avatar"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginStart="8dp"
+				android:background="@drawable/background_avatar"
+				android:padding="2dp"
+				app:loadImage="@{model.senderAvatarUrl}"
+				app:visibleOrGone="@{!model.senderAvatarUrl.isEmpty()}"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintLeft_toLeftOf="parent"/>
+		
+		<LinearLayout
+				android:id="@+id/sender"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_margin="8dp"
+				android:background="@drawable/background_inset"
+				android:elevation="5dp"
+				android:orientation="vertical"
+				app:layout_constraintLeft_toRightOf="@+id/sender_avatar"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				>
+			
+			<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/name"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="8dp"
+					android:text="@{model.senderFullName}"
+					style="@style/NotificationTitleAppearance"
+					tools:text="Director"/>
+			
+			<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/description"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="8dp"
+					android:text="@{model.senderDescription}"
+					style="@style/NotificationTitleAppearance"
+					tools:text="Person description"/>
+			
+			<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/contact_hint"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="8dp"
+					android:text="@string/contact_information"
+					style="@style/NotificationTimeAppearance"
+					app:visibleOrGone="@{!model.senderContacts.isEmpty()}"/>
+			
+			<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/contact_info"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="8dp"
+					android:layout_marginBottom="8dp"
+					android:text="@{model.senderContacts}"
+					style="@style/NotificationTextAppearance"
+					tools:text="Contact info \ntest"
+					app:visibleOrGone="@{!model.senderContacts.isEmpty()}"/>
+			
+		</LinearLayout>
+		
+		<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/message"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="8dp"
+				android:padding="4dp"
+				android:background="@drawable/background_message"
+				app:layout_constraintTop_toBottomOf="@+id/sender"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				android:elevation="6dp">
+			
+			<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/author"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="8dp"
+					android:layout_marginTop="8dp"
+					android:lines="1"
+					android:text="@{model.notificationSenderName}"
+					style="@style/NotificationAuthorAppearance"
+					tools:text="System message"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					/>
+			
+			<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/time"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="4dp"
+					android:layout_marginTop="8dp"
+					android:lines="1"
+					android:text="@{model.notificationTime}"
+					style="@style/NotificationTimeAppearance"
+					tools:text="\u2022 now"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintLeft_toRightOf="@+id/author"
+					/>
+			
+			<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/title"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					style="@style/NotificationTitleAppearance"
+					android:text="@{model.notificationTitle}"
+					tools:text="Message from Director"
+					app:layout_constraintTop_toBottomOf="@+id/author"
+					app:layout_constraintLeft_toLeftOf="parent"
+					android:layout_margin="8dp"/>
+			
+			<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					style="@style/NotificationTextAppearance"
+					android:text="@{model.notificationText}"
+					tools:text="Message content \n \n \n \n \n \n \n \n test"
+					app:layout_constraintTop_toBottomOf="@+id/title"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintBottom_toBottomOf="parent"
+					android:layout_margin="8dp"/>
+		
+		</androidx.constraintlayout.widget.ConstraintLayout>
+		
+	</androidx.constraintlayout.widget.ConstraintLayout>
+	
+</layout>

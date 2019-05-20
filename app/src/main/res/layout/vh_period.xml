@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="8dp"
+              android:padding="4dp"
+              android:background="@drawable/background_message"
+              android:elevation="6dp">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    >
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                style="@style/NotificationTitleAppearance"
+                android:layout_marginStart="4dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="Period name"
+        />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:lines="1"
+                android:layout_gravity="center_vertical"
+                style="@style/NotificationTimeAppearance"
+                tools:text="\u2022 03/09/2017 - 01/01/2018"
+        />
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/content"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_marginStart="4dp"
+                  android:layout_marginEnd="4dp"
+                  android:layout_marginBottom="8dp"
+    />
+
+</LinearLayout>

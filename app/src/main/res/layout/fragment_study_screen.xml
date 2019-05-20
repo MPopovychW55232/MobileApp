@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<variable
+				name="model"
+				type="com.makki.languageapp.fragments.main.study.StudyScreenViewModel"/>
+	</data>
+
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:padding="10dp"
+			android:clipToPadding="false">
+		
+		<androidx.appcompat.widget.AppCompatTextView
+				android:layout_width="match_parent"
+				android:layout_height="150dp"
+				android:layout_marginBottom="10dp"
+				android:background="@drawable/background_grid_button"
+				android:elevation="5dp"
+				android:text="@string/grades_hint"
+				android:textAppearance="@style/StudyGridTextAppearance"
+				android:gravity="center_horizontal|bottom"
+				android:padding="10dp"
+				app:drawableTopCompat="@drawable/ic_grade_star"
+				android:onClick="@{(v) -> model.onGrades()}"/>
+		
+		<androidx.appcompat.widget.AppCompatTextView
+				android:layout_width="match_parent"
+				android:layout_height="150dp"
+				android:layout_marginBottom="10dp"
+				android:background="@drawable/background_grid_button"
+				android:elevation="5dp"
+				android:text="@string/homework_hint"
+				android:textAppearance="@style/StudyGridTextAppearance"
+				android:gravity="center_horizontal|bottom"
+				android:padding="10dp"
+				app:drawableTopCompat="@drawable/ic_book"/>
+		
+		<androidx.appcompat.widget.AppCompatTextView
+				android:layout_width="match_parent"
+				android:layout_height="150dp"
+				android:layout_marginBottom="10dp"
+				android:background="@drawable/background_grid_button"
+				android:elevation="5dp"
+				android:text="@string/news_hint"
+				android:textAppearance="@style/StudyGridTextAppearance"
+				android:gravity="center_horizontal|bottom"
+				android:padding="10dp"
+				app:drawableTopCompat="@drawable/ic_announcement"
+				android:onClick="@{(v) -> model.onAnnouncements()}"/>
+		
+	</LinearLayout>
+	
+</layout>

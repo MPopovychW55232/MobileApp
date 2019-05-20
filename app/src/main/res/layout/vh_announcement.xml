@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/content"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="8dp"
+		android:padding="4dp"
+		android:background="@drawable/background_message"
+		android:elevation="6dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+			android:textStyle="bold"
+            style="@style/NotificationTitleAppearance"
+            android:maxLines="2"
+            android:ellipsize="end"
+            tools:text="Message from Director"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            style="@style/NotificationTextAppearance"
+            tools:text="Message content \n \n \n \n "
+            android:maxLines="4"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+	<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/author"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+			android:lines="1"
+			style="@style/NotificationAuthorAppearance"
+			tools:text="System message"
+			app:layout_constraintTop_toBottomOf="@+id/text"
+			app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+			/>
+	
+	<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/time"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="4dp"
+			android:lines="1"
+			style="@style/NotificationTimeAppearance"
+			tools:text="\u2022 now"
+			app:layout_constraintTop_toTopOf="@+id/author"
+			app:layout_constraintLeft_toRightOf="@+id/author"
+			/>
+
+	
+</androidx.constraintlayout.widget.ConstraintLayout>

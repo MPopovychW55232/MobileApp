@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<variable
+				name="model"
+				type="com.makki.languageapp.fragments.auth.LoginViewModel"/>
+		
+		<import type="android.text.InputType"/>
+	</data>
+	
+	<FrameLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:id="@+id/background_frame"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_gravity="center">
+		
+		<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:background="@drawable/background_input"
+				android:layout_margin="10dp"
+				android:elevation="8dp"
+				android:orientation="vertical">
+			
+			<com.google.android.material.textfield.TextInputLayout
+					android:id="@+id/login"
+					android:layout_width="350dp"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="18dp"
+					android:layout_marginTop="18dp"
+					android:layout_marginStart="18dp"
+					android:layout_marginEnd="18dp"
+					app:hintTextAppearance="@style/TextInputStyle"
+					app:errorTextAppearance="@style/ErrorTextInputStyle"
+					app:errorHint="@{model.loginError}"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintRight_toRightOf="parent">
+				<requestFocus/>
+				
+				<com.google.android.material.textfield.TextInputEditText
+						android:id="@+id/login_edit_text"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@={model.login}"
+						android:hint="@string/login_hint"
+						android:inputType="textNoSuggestions"
+						android:imeOptions="actionNext"
+						android:afterTextChanged="@{(s) -> model.onTextChanged()}"
+						app:onFocusChanged="@{(v, focused) -> model.loginFocusChange(focused)}"/>
+			
+			</com.google.android.material.textfield.TextInputLayout>
+			
+			<com.google.android.material.textfield.TextInputLayout
+					android:id="@+id/password"
+					android:layout_width="350dp"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="18dp"
+					android:layout_marginStart="18dp"
+					android:layout_marginEnd="18dp"
+					app:hintTextAppearance="@style/TextInputStyle"
+					app:errorTextAppearance="@style/ErrorTextInputStyle"
+					app:passwordToggleEnabled="true"
+					app:errorHint="@{model.passwordError}"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/login"
+					app:layout_constraintRight_toRightOf="parent">
+				
+				<com.google.android.material.textfield.TextInputEditText
+						android:id="@+id/password_edit_text"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@={model.password}"
+						android:hint="@string/password_hint"
+						android:inputType="textPassword"
+						android:imeOptions="actionGo"
+						android:afterTextChanged="@{(s) -> model.onTextChanged()}"
+						app:onFocusChanged="@{(v, focused) -> model.passwordFocusChange(focused)}"/>
+			
+			</com.google.android.material.textfield.TextInputLayout>
+			
+			<androidx.appcompat.widget.AppCompatTextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingStart="22dp"
+					android:paddingEnd="22dp"
+					android:layout_marginBottom="4dp"
+					android:maxLines="3"
+					android:visibility="gone"
+					android:text="@{model.errorMessage}"
+					android:textColor="@color/colorNotice"
+					app:visibleOrNot="@{!model.errorMessage.isEmpty()}"
+					tools:text="sample error"/>
+			
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal"
+					android:paddingStart="18dp"
+					android:paddingEnd="18dp"
+					android:paddingBottom="18dp"
+					android:clipToPadding="false">
+				
+				<androidx.appcompat.widget.AppCompatButton
+						android:layout_width="0dp"
+						android:layout_height="50dp"
+						android:layout_weight="1"
+						android:layout_marginEnd="9dp"
+						android:text="@string/login_hint"
+						android:gravity="center"
+						android:enabled="@{model.enableButton &amp;&amp; !model.loading}"
+						android:layout_gravity="center_horizontal|bottom"
+						android:background="@drawable/background_button"
+						android:elevation="8dp"
+						android:onClick="@{(v) -> model.onLogin()}"/>
+				
+				<androidx.appcompat.widget.AppCompatButton
+						android:layout_width="0dp"
+						android:layout_height="50dp"
+						android:layout_weight="1"
+						android:layout_marginStart="9dp"
+						android:text="@string/login_sign_up"
+						android:gravity="center"
+						android:enabled="@{!model.loading}"
+						android:layout_gravity="center_horizontal|bottom"
+						android:background="@drawable/background_button"
+						android:elevation="8dp"
+						android:onClick="@{(v) -> model.onSignUp()}"/>
+				
+			</LinearLayout>
+			
+		</LinearLayout>
+	
+		<com.makki.languageapp.lib.views.RollinView
+				android:layout_width="match_parent"
+				android:layout_height="110dp"
+				android:layout_gravity="bottom"
+				app:visibleOrNot="@{model.loading}"/>
+		
+	</FrameLayout>
+
+</layout>
